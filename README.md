@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Todo Frontend
+
+A modern Todo application frontend built with Next.js, TypeScript, and Tailwind CSS. This app connects to a Quarkus backend API to provide full CRUD functionality for managing todos.
+
+## Features
+
+- ✅ **Add new todos** with a clean, intuitive interface
+- ✅ **Toggle completion status** by clicking checkboxes
+- ✅ **Edit todo titles** inline with click-to-edit functionality
+- ✅ **Delete todos** with confirmation
+- ✅ **Separate sections** for active and completed tasks
+- ✅ **Real-time updates** with backend synchronization
+- ✅ **Responsive design** with Tailwind CSS
+- ✅ **TypeScript** for type safety
+- ✅ **Error handling** with user-friendly messages
+
+## Tech Stack
+
+- **Next.js 15** - React framework with Turbopack
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Hooks** - Modern state management
+- **Fetch API** - HTTP client for backend communication
+
+## Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+- Quarkus backend API running on `http://localhost:8080`
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd todo-frontend
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   ```
+   http://localhost:3000
+   ```
+
+## API Integration
+
+This frontend connects to a Quarkus backend API with the following endpoints:
+
+- `GET /api/todos` - Fetch all todos
+- `POST /api/todos` - Create a new todo
+- `PUT /api/todos/{id}` - Update a todo (title and/or completion status)
+- `DELETE /api/todos/{id}` - Delete a todo
+
+### Expected Todo Structure
+```typescript
+interface Todo {
+  id?: number;
+  title: string;
+  completed: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/
+│   ├── globals.css          # Global styles and Tailwind imports
+│   ├── layout.tsx           # Root layout component
+│   └── page.tsx             # Home page with TodoList
+├── components/
+│   └── TodoList.tsx         # Main Todo component with CRUD operations
+├── lib/
+│   └── api.ts              # API client for backend communication
+└── types/
+    └── todo.ts             # TypeScript type definitions
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Available Scripts
 
-## Learn More
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-To learn more about Next.js, take a look at the following resources:
+## Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The API base URL is configured in `src/lib/api.ts`:
+```typescript
+const API_URL = 'http://localhost:8080/api';
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Update this URL if your backend runs on a different host or port.
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes
+4. Commit your changes: `git commit -m 'Add some feature'`
+5. Push to the branch: `git push origin feature-name`
+6. Submit a pull request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
