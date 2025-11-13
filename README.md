@@ -93,6 +93,9 @@ src/
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
+- `npm test` - Run tests
+- `npm run test:watch` - Run tests in watch mode
+- `npm run test:coverage` - Run tests with coverage report
 
 ## Configuration
 
@@ -102,6 +105,41 @@ const API_URL = 'http://localhost:8080/api';
 ```
 
 Update this URL if your backend runs on a different host or port.
+
+## Testing
+
+This project uses Jest and React Testing Library for comprehensive testing.
+
+### Running Tests
+
+```bash
+# Run all tests once
+npm test
+
+# Run tests in watch mode (useful during development)
+npm run test:watch
+
+# Run tests with coverage report
+npm run test:coverage
+```
+
+### Test Structure
+
+- **Unit Tests**: API functions are tested in isolation with mocked fetch calls
+- **Component Tests**: React components are tested with user interactions
+- **Test Files**: Located in `__tests__` directories next to the source files
+  - `src/lib/__tests__/api.test.ts` - API client tests
+  - `src/components/__tests__/TodoList.test.tsx` - TodoList component tests
+
+### Test Coverage
+
+The test suite covers:
+- ✅ API calls (GET, POST, PUT, DELETE)
+- ✅ Component rendering and loading states
+- ✅ User interactions (adding, editing, deleting, toggling todos)
+- ✅ Error handling and error messages
+- ✅ Form validation
+- ✅ Active and completed todo sections
 
 ## Contributing
 
